@@ -39,7 +39,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         )
         await self.send(text_data=system_message_html)
 
-        client = AsyncOpenAI(api_key='sk-proj-PF9j8gXqDqrkRqgrIni0T3BlbkFJFrxKymslU0N5XVo1Aqaa')
+        client = AsyncOpenAI(api_key='')
         openai_response = await client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=self.messages,
