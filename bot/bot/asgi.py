@@ -12,12 +12,12 @@ import os
 from django.core.asgi import get_asgi_application
 from pegasus_chat_demo.routing import websocket_urlpatterns
 from channels.routing import ProtocolTypeRouter, URLRouter
-from django.core.asgi import get_asgi_application
 from channels.security.websocket import AllowedHostsOriginValidator
 from channels.auth import AuthMiddlewareStack
 
-django_asgi_app = get_asgi_application()
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bot.settings')
 
+django_asgi_app = get_asgi_application()
 
 application = ProtocolTypeRouter(
     {
@@ -31,7 +31,3 @@ application = ProtocolTypeRouter(
         ),
     }
 )
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bot.settings')
-
-application = get_asgi_application()
